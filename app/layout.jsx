@@ -1,4 +1,5 @@
-import "../assets/styles/globals.css";
+import Navbar from "@/components/Navbar";
+import "@/assets/styles/globals.css";
 
 export const metadata = {
   title: "Property Pluse",
@@ -10,6 +11,7 @@ const MainLayout = ({ children }) => {
   return (
     <html>
       <body>
+        <Navbar />
         <main>{children}</main>
       </body>
     </html>
