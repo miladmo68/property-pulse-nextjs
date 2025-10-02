@@ -29,12 +29,6 @@ const HomeProperties = () => {
         >
           View All Properties
         </Link>
-        <Link
-          href="/properties"
-          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700 hover:scale-[1.02] transition-all"
-        >
-          View All Properties
-        </Link>
       </section>
     </>
   );
