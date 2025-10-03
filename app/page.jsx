@@ -5,9 +5,9 @@ import InfoBoxes from "@/components/InfoBoxes";
 const HomePage = () => {
   return (
     <>
-      <Hero />
-      <InfoBoxes />
-      <HomeProperties />
+      {/* <Hero /> */}
+      {/* <InfoBoxes /> */}
+      {/* <HomeProperties /> */}
     </>
   );
 };
