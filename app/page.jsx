@@ -5,7 +5,7 @@ import InfoBoxes from "@/components/InfoBoxes";
 const HomePage = () => {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <InfoBoxes />
       <HomeProperties />
     </>
