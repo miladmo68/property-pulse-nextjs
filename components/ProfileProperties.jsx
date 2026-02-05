@@ -1,13 +1,35 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import deleteProperty from "@/app/actions/deleteProperty";
 
 const ProfileProperties = ({ properties: initialProperties }) => {
   const [properties, setProperties] = useState(initialProperties);
 
+  const handleDeleteProperty = async (propertyId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this property?",
+    );
+
+    if (!confirmed) return;
+
+    const deletePropertyById = deleteProperty.bind(null, propertyId);
+
+    await deletePropertyById();
+
+    toast.success("Property Deleted");
+
+    const updatedProperties = properties.filter(
+      (property) => property._id !== propertyId,
+    );
+
+    setProperties(updatedProperties);
+  };
+
   return properties.map((property) => (
     <div key={property._id} className="mb-10">
-      <a href="/property.html">
+      <Link href={`/properties/${property._id}`}>
         <Image
           className="h-32 w-full rounded-md object-cover"
           src={property.images[0]}
@@ -15,7 +37,7 @@ const ProfileProperties = ({ properties: initialProperties }) => {
           height={200}
           alt="Property 1"
         />
-      </a>
+      </Link>
       <div className="mt-2">
         <p className="text-lg font-semibold">{property.name}</p>
         <p className="text-gray-600">
@@ -33,6 +55,7 @@ const ProfileProperties = ({ properties: initialProperties }) => {
         <button
           className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
           type="button"
+          onClick={() => handleDeleteProperty(property._id)}
         >
           Delete
         </button>
